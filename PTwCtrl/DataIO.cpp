@@ -765,7 +765,7 @@ UINT CDataIO::MemStreamingThreadProcMain(DWORD dwID)
 	while (!m_bMemStreamingTerm) {
 
 		auto tx = [&](PTBUFFER &buf, CSharedTransportStreamer *st) -> bool {
-			bool res = false ;
+			bool res = false;
 			if(BuffLock(dwID,CmdWait)) {
 				if(st!=NULL) {
 					wstring mutexName = st->Name().substr(0, st->Name().length() - sln);
