@@ -309,6 +309,7 @@ void CDataIO3::Run(int iID)
 		m_hThread4 == INVALID_HANDLE_VALUE ) {
 
 		m_bThTerm=FALSE;
+		::ResetEvent(m_hWakeupEvent);
 	}
 
 	if(enISDB == PT::Device::ISDB_T) {
@@ -372,7 +373,6 @@ void CDataIO3::Stop()
 				if(::WaitForSingleObject(handles[i],0)!=WAIT_OBJECT_0)
 					::TerminateThread(handles[i], 0xffffffff);
 		}
-		::ResetEvent(m_hWakeupEvent);
 		for(DWORD i=0;i<cnt;i++)
 			CloseHandle(handles[i]);
 		m_hThread1 = INVALID_HANDLE_VALUE;
